@@ -1,5 +1,5 @@
 {
-  "name": "cdk-codepipeline-slack",
+  "name": "@n04h/cdk-codepipeline-slack",
   "version": "0.0.1",
   "description": "Derivative of @cloudcomponents/cdk-codepipeline-slack",
   "scripts": {
