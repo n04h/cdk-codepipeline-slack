@@ -340,6 +340,9 @@ exports[`default setup 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
       ],
       "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
@@ -362,7 +365,7 @@ exports[`default setup 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -462,6 +465,9 @@ exports[`default setup 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
       ],
       "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
@@ -484,7 +490,7 @@ exports[`default setup 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -1192,6 +1198,9 @@ exports[`private & public channel 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
       ],
       "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
@@ -1214,7 +1223,7 @@ exports[`private & public channel 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -1314,6 +1323,9 @@ exports[`private & public channel 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
       ],
       "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
@@ -1336,7 +1348,7 @@ exports[`private & public channel 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },

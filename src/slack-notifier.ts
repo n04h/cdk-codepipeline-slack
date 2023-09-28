@@ -3,7 +3,7 @@ import { IPipeline } from 'aws-cdk-lib/aws-codepipeline';
 import { Rule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Architecture, Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 import { ChannelTypes } from './channel-types';
@@ -46,7 +46,8 @@ export class SlackNotifier extends Construct {
     }
 
     const notifier = new Function(scope, 'SlackNotifierFunction', {
-      runtime: Runtime.NODEJS_14_X,
+      runtime: Runtime.NODEJS_18_X,
+      architecture: Architecture.ARM_64,
       handler: 'index.handler',
       code: Code.fromAsset(path.join(__dirname, 'lambdas', 'notifier')),
       environment: this.environment,
