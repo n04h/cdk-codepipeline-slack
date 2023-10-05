@@ -1,6 +1,6 @@
 {
   "name": "@n04h/cdk-codepipeline-slack",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Derivative of @cloudcomponents/cdk-codepipeline-slack",
   "scripts": {
     "build": "tsc",
