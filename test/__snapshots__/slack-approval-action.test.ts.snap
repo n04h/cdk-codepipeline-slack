@@ -347,10 +347,11 @@ exports[`default setup 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "9dd607ae823fdbefbd432f035079ba74b1bb579191ba58611be3d3eb2af6b82d.zip",
+          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
         },
         "Environment": {
           "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -472,10 +473,11 @@ exports[`default setup 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "cc6494598596184534568fc3987d565135d8b5b3ee944e387a8505f33ea21537.zip",
+          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
         },
         "Environment": {
           "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -1205,10 +1207,11 @@ exports[`private & public channel 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "9dd607ae823fdbefbd432f035079ba74b1bb579191ba58611be3d3eb2af6b82d.zip",
+          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
         },
         "Environment": {
           "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -1330,10 +1333,11 @@ exports[`private & public channel 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "cc6494598596184534568fc3987d565135d8b5b3ee944e387a8505f33ea21537.zip",
+          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
         },
         "Environment": {
           "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",

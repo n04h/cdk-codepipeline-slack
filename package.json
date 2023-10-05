@@ -1,6 +1,6 @@
 {
   "name": "@n04h/cdk-codepipeline-slack",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "Derivative of @cloudcomponents/cdk-codepipeline-slack",
   "scripts": {
     "build": "tsc",
@@ -28,6 +28,7 @@
     "aws-sdk": "^2.1062.0",
     "aws-serverless-express": "^3.4.0",
     "constructs": "^10.2.70",
+    "esbuild": "^0.19.4",
     "express": "^4.17.1",
     "get-env-or-die": "^1.0.11"
   },

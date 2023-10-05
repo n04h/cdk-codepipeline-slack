@@ -3,7 +3,8 @@ import { RestApi, LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import { ActionCategory, CommonActionProps, IStage, ActionBindOptions, ActionConfig } from 'aws-cdk-lib/aws-codepipeline';
 import { Action } from 'aws-cdk-lib/aws-codepipeline-actions';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Architecture, Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { aws_lambda_nodejs } from 'aws-cdk-lib';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import { LambdaSubscription } from 'aws-cdk-lib/aws-sns-subscriptions';
 import { Construct } from 'constructs';
@@ -62,11 +63,11 @@ export class SlackApprovalAction extends Action {
       environment.SLACK_BOT_ICON = this.props.slackBotIcon;
     }
 
-    const approvalRequester = new Function(scope, 'SlackApprovalRequesterFunction', {
+    const approvalRequester = new aws_lambda_nodejs.NodejsFunction(scope, 'SlackApprovalRequesterFunction', {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      code: Code.fromAsset(path.join(__dirname, 'lambdas', 'approval-requester')),
+      entry: path.join(__dirname, 'lambdas', 'approval-requester', 'index.js'),
       environment,
     });
 
@@ -74,11 +75,11 @@ export class SlackApprovalAction extends Action {
     topic.grantPublish(options.role);
     topic.addSubscription(new LambdaSubscription(approvalRequester));
 
-    const approvalHandler = new Function(scope, 'SlackApprovalHandlerFunction', {
+    const approvalHandler = new aws_lambda_nodejs.NodejsFunction(scope, 'SlackApprovalHandlerFunction', {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      code: Code.fromAsset(path.join(__dirname, 'lambdas', 'approval-handler')),
+      entry: path.join(__dirname, 'lambdas', 'approval-handler', 'index.js'),
       environment,
     });
 

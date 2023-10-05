@@ -3,7 +3,8 @@ import { IPipeline } from 'aws-cdk-lib/aws-codepipeline';
 import { Rule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Architecture, Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { aws_lambda_nodejs } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 import { ChannelTypes } from './channel-types';
@@ -45,11 +46,11 @@ export class SlackNotifier extends Construct {
       this.environment.SLACK_BOT_ICON = slackBotIcon;
     }
 
-    const notifier = new Function(scope, 'SlackNotifierFunction', {
+    const notifier = new aws_lambda_nodejs.NodejsFunction(this, 'SlackNotifierFunction', {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      code: Code.fromAsset(path.join(__dirname, 'lambdas', 'notifier')),
+      entry: path.join(__dirname, 'lambdas', 'notifier', 'index.js'),
       environment: this.environment,
     });
     notifier.addToRolePolicy(
