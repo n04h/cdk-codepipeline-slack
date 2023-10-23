@@ -1,0 +1,1721 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default setup 1`] = `
+{
+  "Outputs": {
+    "PipelineApproveSlackApprovalSlackApprovalApiEndpointDDD3E033": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "Bucket83908E77": {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalCodePipelineActionRoleDefaultPolicy3252B824": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineApproveSlackApprovalCodePipelineActionRoleDefaultPolicy3252B824",
+        "Roles": [
+          {
+            "Ref": "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "ANY",
+        "Integration": {
+          "Type": "MOCK",
+        },
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            "RootResourceId",
+          ],
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiAccountA4491BD6": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiCloudWatchRoleE69841A0",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B": {
+      "Properties": {
+        "Name": "SlackApprovalApi",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiCloudWatchRoleE69841A0": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiDeployment1BB48DE01cde33ef942aa0a8f7065400447651dd": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiproxyANYF7F7CA26",
+        "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
+        "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiAccountA4491BD6",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeployment1BB48DE01cde33ef942aa0a8f7065400447651dd",
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYApiPermissionPipelineApproveSlackApprovalSlackApprovalApi9824A4AEANYproxyA9562C02": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+              },
+              "/",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15",
+              },
+              "/*/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYApiPermissionTestPipelineApproveSlackApprovalSlackApprovalApi9824A4AEANYproxy9CD1F476": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+              },
+              "/test-invoke-stage/*/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYF7F7CA26": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "ANY",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "{proxy+}",
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B",
+        "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "SLACK_BOT_NAME": "botName",
+            "SLACK_BOT_TOKEN": "botToken",
+            "SLACK_CHANNEL": "channel",
+            "SLACK_CHANNEL_TYPES": "public_channel",
+            "SLACK_SIGNING_SECRET": "signingSecret",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "codepipeline:PutApprovalResult",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codepipeline:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "PipelineC660917D",
+                    },
+                    "/Approve/SlackApproval",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B",
+        "Roles": [
+          {
+            "Ref": "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionAllowInvokePipelineApproveSlackApprovalSlackApprovalTopicC388AE7E4E6E4EF1": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD",
+            "Arn",
+          ],
+        },
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "SLACK_BOT_NAME": "botName",
+            "SLACK_BOT_TOKEN": "botToken",
+            "SLACK_CHANNEL": "channel",
+            "SLACK_CHANNEL_TYPES": "public_channel",
+            "SLACK_SIGNING_SECRET": "signingSecret",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionSlackApprovalTopicF3F92492": {
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD",
+            "Arn",
+          ],
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+        },
+      },
+      "Type": "AWS::SNS::Subscription",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9": {
+      "Type": "AWS::SNS::Topic",
+    },
+    "PipelineC660917D": {
+      "DependsOn": [
+        "PipelineRoleDefaultPolicyC7A05455",
+        "PipelineRoleD68726F7",
+      ],
+      "Properties": {
+        "ArtifactStore": {
+          "Location": {
+            "Ref": "Bucket83908E77",
+          },
+          "Type": "S3",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "PipelineRoleD68726F7",
+            "Arn",
+          ],
+        },
+        "Stages": [
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Source",
+                  "Owner": "AWS",
+                  "Provider": "S3",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "S3Bucket": {
+                    "Ref": "Bucket83908E77",
+                  },
+                  "S3ObjectKey": "file.zip",
+                },
+                "Name": "S3",
+                "OutputArtifacts": [
+                  {
+                    "Name": "Artifact_Source_S3",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Source",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Approval",
+                  "Owner": "AWS",
+                  "Provider": "Manual",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "CustomData": "snapshotTest",
+                  "NotificationArn": {
+                    "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+                  },
+                },
+                "Name": "SlackApproval",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Approve",
+          },
+        ],
+      },
+      "Type": "AWS::CodePipeline::Pipeline",
+    },
+    "PipelineRoleD68726F7": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codepipeline.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineRoleDefaultPolicyC7A05455": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineRoleDefaultPolicyC7A05455",
+        "Roles": [
+          {
+            "Ref": "PipelineRoleD68726F7",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineSourceS3CodePipelineActionRole3CAFD08F": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineSourceS3CodePipelineActionRoleDefaultPolicy8B9DCBCF": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/file.zip",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineSourceS3CodePipelineActionRoleDefaultPolicy8B9DCBCF",
+        "Roles": [
+          {
+            "Ref": "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`private & public channel 1`] = `
+{
+  "Outputs": {
+    "PipelineApproveSlackApprovalSlackApprovalApiEndpointDDD3E033": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "Bucket83908E77": {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalCodePipelineActionRoleDefaultPolicy3252B824": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineApproveSlackApprovalCodePipelineActionRoleDefaultPolicy3252B824",
+        "Roles": [
+          {
+            "Ref": "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "ANY",
+        "Integration": {
+          "Type": "MOCK",
+        },
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            "RootResourceId",
+          ],
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiAccountA4491BD6": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiCloudWatchRoleE69841A0",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B": {
+      "Properties": {
+        "Name": "SlackApprovalApi",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiCloudWatchRoleE69841A0": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiDeployment1BB48DE01cde33ef942aa0a8f7065400447651dd": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiproxyANYF7F7CA26",
+        "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
+        "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalApiAccountA4491BD6",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeployment1BB48DE01cde33ef942aa0a8f7065400447651dd",
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYApiPermissionPipelineApproveSlackApprovalSlackApprovalApi9824A4AEANYproxyA9562C02": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+              },
+              "/",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiDeploymentStageprod8DAD2B15",
+              },
+              "/*/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYApiPermissionTestPipelineApproveSlackApprovalSlackApprovalApi9824A4AEANYproxy9CD1F476": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+              },
+              "/test-invoke-stage/*/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyANYF7F7CA26": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "ANY",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
+        },
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "{proxy+}",
+        "RestApiId": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalApiC2FC528B",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunction7B7AF5E9": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B",
+        "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "SLACK_BOT_NAME": "botName",
+            "SLACK_BOT_TOKEN": "botToken",
+            "SLACK_CHANNEL": "channel",
+            "SLACK_CHANNEL_TYPES": "public_channel,private_channel",
+            "SLACK_SIGNING_SECRET": "signingSecret",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "codepipeline:PutApprovalResult",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codepipeline:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":",
+                    {
+                      "Ref": "PipelineC660917D",
+                    },
+                    "/Approve/SlackApproval",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRoleDefaultPolicy90D2E91B",
+        "Roles": [
+          {
+            "Ref": "PipelineApproveSlackApprovalSlackApprovalHandlerFunctionServiceRole9CFAC29B",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionAllowInvokePipelineApproveSlackApprovalSlackApprovalTopicC388AE7E4E6E4EF1": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD",
+            "Arn",
+          ],
+        },
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD": {
+      "DependsOn": [
+        "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "SLACK_BOT_NAME": "botName",
+            "SLACK_BOT_TOKEN": "botToken",
+            "SLACK_CHANNEL": "channel",
+            "SLACK_CHANNEL_TYPES": "public_channel,private_channel",
+            "SLACK_SIGNING_SECRET": "signingSecret",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionServiceRole89EBD53E": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionSlackApprovalTopicF3F92492": {
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "PipelineApproveSlackApprovalSlackApprovalRequesterFunctionD07D9FBD",
+            "Arn",
+          ],
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+        },
+      },
+      "Type": "AWS::SNS::Subscription",
+    },
+    "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9": {
+      "Type": "AWS::SNS::Topic",
+    },
+    "PipelineC660917D": {
+      "DependsOn": [
+        "PipelineRoleDefaultPolicyC7A05455",
+        "PipelineRoleD68726F7",
+      ],
+      "Properties": {
+        "ArtifactStore": {
+          "Location": {
+            "Ref": "Bucket83908E77",
+          },
+          "Type": "S3",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "PipelineRoleD68726F7",
+            "Arn",
+          ],
+        },
+        "Stages": [
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Source",
+                  "Owner": "AWS",
+                  "Provider": "S3",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "S3Bucket": {
+                    "Ref": "Bucket83908E77",
+                  },
+                  "S3ObjectKey": "file.zip",
+                },
+                "Name": "S3",
+                "OutputArtifacts": [
+                  {
+                    "Name": "Artifact_Source_S3",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Source",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Approval",
+                  "Owner": "AWS",
+                  "Provider": "Manual",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "CustomData": "snapshotTest",
+                  "NotificationArn": {
+                    "Ref": "PipelineApproveSlackApprovalSlackApprovalTopic3F680CD9",
+                  },
+                },
+                "Name": "SlackApproval",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Approve",
+          },
+        ],
+      },
+      "Type": "AWS::CodePipeline::Pipeline",
+    },
+    "PipelineRoleD68726F7": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codepipeline.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineRoleDefaultPolicyC7A05455": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "PipelineApproveSlackApprovalCodePipelineActionRole30A2C215",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineRoleDefaultPolicyC7A05455",
+        "Roles": [
+          {
+            "Ref": "PipelineRoleD68726F7",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PipelineSourceS3CodePipelineActionRole3CAFD08F": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "PipelineSourceS3CodePipelineActionRoleDefaultPolicy8B9DCBCF": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/file.zip",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PipelineSourceS3CodePipelineActionRoleDefaultPolicy8B9DCBCF",
+        "Roles": [
+          {
+            "Ref": "PipelineSourceS3CodePipelineActionRole3CAFD08F",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
