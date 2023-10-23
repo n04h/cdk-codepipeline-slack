@@ -1,9 +1,10 @@
 {
   "name": "@n04h/cdk-codepipeline-slack",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Derivative of @cloudcomponents/cdk-codepipeline-slack",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:clean && tsc",
+    "build:clean": "rm -fr lib/*",
     "test": "jest",
     "test:updateSnapshot": "jest --updateSnapshot"
   },
