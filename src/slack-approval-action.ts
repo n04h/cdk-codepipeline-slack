@@ -64,7 +64,7 @@ export class SlackApprovalAction extends Action {
     }
 
     const approvalRequester = new aws_lambda_nodejs.NodejsFunction(scope, 'SlackApprovalRequesterFunction', {
-      runtime: Runtime.NODEJS_18_X,
+      runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
       entry: path.join(__dirname, 'lambdas', 'approval-requester', 'index.ts'),
@@ -76,7 +76,7 @@ export class SlackApprovalAction extends Action {
     topic.addSubscription(new LambdaSubscription(approvalRequester));
 
     const approvalHandler = new aws_lambda_nodejs.NodejsFunction(scope, 'SlackApprovalHandlerFunction', {
-      runtime: Runtime.NODEJS_18_X,
+      runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
       entry: path.join(__dirname, 'lambdas', 'approval-handler', 'index.ts'),
