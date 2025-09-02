@@ -1,7 +1,5 @@
-import { AttachmentAction } from '@slack/web-api';
-
 import { Message } from './message';
-import { MessageBuilder, Field } from './message-builder';
+import { MessageBuilder, Field, AttachmentAction, MessageBuilderProps } from './message-builder';
 
 export interface Approval {
   token: string;

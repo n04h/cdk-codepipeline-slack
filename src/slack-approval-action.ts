@@ -67,7 +67,7 @@ export class SlackApprovalAction extends Action {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      entry: path.join(__dirname, 'lambdas', 'approval-requester', 'index.js'),
+      entry: path.join(__dirname, 'lambdas', 'approval-requester', 'index.ts'),
       environment,
     });
 
@@ -79,7 +79,7 @@ export class SlackApprovalAction extends Action {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      entry: path.join(__dirname, 'lambdas', 'approval-handler', 'index.js'),
+      entry: path.join(__dirname, 'lambdas', 'approval-handler', 'index.ts'),
       environment,
     });
 

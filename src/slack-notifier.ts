@@ -50,7 +50,7 @@ export class SlackNotifier extends Construct {
       runtime: Runtime.NODEJS_18_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      entry: path.join(__dirname, 'lambdas', 'notifier', 'index.js'),
+      entry: path.join(__dirname, 'lambdas', 'notifier', 'index.ts'),
       environment: this.environment,
     });
     notifier.addToRolePolicy(

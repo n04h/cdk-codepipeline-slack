@@ -1,4 +1,21 @@
-import { WebClient, WebAPICallResult, Dialog } from '@slack/web-api';
+import { WebClient, WebAPICallResult } from '@slack/web-api';
+
+interface Dialog {
+  callback_id: string;
+  title: string;
+  elements: Array<{
+    type: "textarea" | "text" | "select";
+    name: string;
+    label: string;
+    optional?: boolean;
+    placeholder?: string;
+    value?: string;
+    max_length?: number;
+  }>;
+  state: string;
+  submit_label: string;
+  notify_on_cancel: boolean;
+}
 
 import { Message } from './message';
 
@@ -60,28 +77,27 @@ export class SlackBot {
 
     return this.bot.chat.update({
       channel: channelId,
-      icon_emoji: this.icon,
-      username: this.name,
       ts,
       ...message,
     });
   }
 
   public async findChannel(channelName: string): Promise<Channel | undefined> {
-    const response = (await this.bot.conversations.list({
+    const response = await this.bot.conversations.list({
       types: this.channelTypes,
-    })) as Record<string, Channel[]>;
+    });
 
-    return response.channels.find((channel) => channel.name === channelName);
+    const found = response.channels?.find((channel) => channel.name === channelName);
+    return found ? { id: found.id || '', name: found.name || '' } : undefined;
   }
 
   protected async findMessages(channelId: string): Promise<Message[] | undefined> {
-    const response = (await this.bot.conversations.history({
+    const response = await this.bot.conversations.history({
       channel: channelId,
       // oldest: Date.now() - 7 Days
-    })) as Record<string, Message[]>;
+    });
 
-    return response.messages;
+    return response.messages as Message[];
   }
 
   public async findMessageForExecutionId(this: SlackBot, executionId: string): Promise<Message | undefined> {
@@ -113,7 +129,8 @@ export class SlackBot {
         types: this.channelTypes,
       });
 
-      const channel = (response.channels as Channel[]).find((channel) => channel.name === this.channelName);
+      const found = response.channels?.find((channel) => channel.name === this.channelName);
+      const channel = found ? { id: found.id || '', name: found.name || '' } : undefined;
 
       if (!channel) {
         throw new Error(`Channel ${this.channelName} not found`);

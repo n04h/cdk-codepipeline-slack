@@ -1,9 +1,13 @@
-import { MessageAttachment } from '@slack/web-api';
 import type { CodePipelineCloudWatchEvent } from 'aws-lambda';
 import { CodePipeline } from 'aws-sdk';
 
 import { Message } from './message';
-import { MessageBuilder } from './message-builder';
+import { MessageBuilder, MessageBuilderProps } from './message-builder';
+
+interface NotifierMessageBuilderProps extends MessageBuilderProps {
+  title?: string;
+  text?: string;
+}
 
 const getPipelineStateIcon = (state: string | undefined): string => {
   switch (state) {
@@ -112,7 +116,7 @@ export class NotifierMessageBuilder extends MessageBuilder {
 
   protected text?: string;
 
-  constructor(props: MessageAttachment) {
+  constructor(props: NotifierMessageBuilderProps) {
     super(props);
     this.title = props.title;
     this.text = props.text;

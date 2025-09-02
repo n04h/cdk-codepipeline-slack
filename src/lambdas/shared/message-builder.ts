@@ -1,14 +1,21 @@
-import { AttachmentAction, MessageAttachment } from '@slack/web-api';
+export interface AttachmentAction {
+  name: string;
+  text: string;
+  type: "select" | "button";
+  style?: "default" | "primary" | "danger";
+  value?: string;
+}
+
 import { Message } from './message';
 
 export type Field = { title: string; value: string; short?: boolean };
 
-// export interface MessageBuilderProps {
-//   actions: AttachmentAction[];
-//   fields: Field[];
-//   footer: string;
-//   ts?: string;
-// }
+export interface MessageBuilderProps {
+  actions?: AttachmentAction[];
+  fields?: Field[];
+  footer?: string;
+  ts?: string;
+}
 
 export abstract class MessageBuilder {
   protected actions?: AttachmentAction[];
@@ -19,7 +26,7 @@ export abstract class MessageBuilder {
 
   protected footer?: string;
 
-  constructor(props: MessageAttachment) {
+  constructor(props: MessageBuilderProps) {
     this.actions = props.actions;
     this.fields = props.fields;
     this.footer = props.footer;

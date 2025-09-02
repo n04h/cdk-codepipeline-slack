@@ -1,4 +1,22 @@
-import { AttachmentAction, Dialog } from '@slack/web-api';
+// Dialog is deprecated - using interface instead
+interface Dialog {
+  callback_id: string;
+  title: string;
+  elements: Array<{
+    type: "textarea" | "text" | "select";
+    name: string;
+    label: string;
+    optional?: boolean;
+    placeholder?: string;
+    value?: string;
+    max_length?: number;
+  }>;
+  state: string;
+  submit_label: string;
+  notify_on_cancel: boolean;
+}
+
+import { AttachmentAction } from './message-builder';
 import { CodePipeline } from 'aws-sdk';
 import { getEnv } from 'get-env-or-die';
 
