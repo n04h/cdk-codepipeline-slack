@@ -60,28 +60,26 @@ export class SlackBot {
 
     return this.bot.chat.update({
       channel: channelId,
-      icon_emoji: this.icon,
-      username: this.name,
       ts,
       ...message,
     });
   }
 
   public async findChannel(channelName: string): Promise<Channel | undefined> {
-    const response = (await this.bot.conversations.list({
+    const response = await this.bot.conversations.list({
       types: this.channelTypes,
-    })) as Record<string, Channel[]>;
+    });
 
-    return response.channels.find((channel) => channel.name === channelName);
+    return (response.channels as Channel[])?.find((channel) => channel.name === channelName);
   }
 
   protected async findMessages(channelId: string): Promise<Message[] | undefined> {
-    const response = (await this.bot.conversations.history({
+    const response = await this.bot.conversations.history({
       channel: channelId,
       // oldest: Date.now() - 7 Days
-    })) as Record<string, Message[]>;
+    });
 
-    return response.messages;
+    return response.messages as Message[] | undefined;
   }
 
   public async findMessageForExecutionId(this: SlackBot, executionId: string): Promise<Message | undefined> {

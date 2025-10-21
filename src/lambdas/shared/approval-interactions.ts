@@ -1,5 +1,6 @@
-import { AttachmentAction, Dialog } from '@slack/web-api';
+import { Dialog } from '@slack/web-api';
 import { CodePipeline } from 'aws-sdk';
+import { AttachmentAction } from './slack-types';
 import { getEnv } from 'get-env-or-die';
 
 import { ApprovalMessageBuilder, Approval } from './approval-message-builder';

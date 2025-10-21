@@ -1,5 +1,5 @@
-import { AttachmentAction, MessageAttachment } from '@slack/web-api';
 import { Message } from './message';
+import { AttachmentAction, MessageAttachment } from './slack-types';
 
 export type Field = { title: string; value: string; short?: boolean };
 

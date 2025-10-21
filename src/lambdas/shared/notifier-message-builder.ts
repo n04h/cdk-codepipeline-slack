@@ -1,5 +1,5 @@
-import { MessageAttachment } from '@slack/web-api';
 import type { CodePipelineCloudWatchEvent } from 'aws-lambda';
+import { MessageAttachment } from './slack-types';
 import { CodePipeline } from 'aws-sdk';
 
 import { Message } from './message';

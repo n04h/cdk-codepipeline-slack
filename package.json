@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@slack/interactive-messages": "^1.7.1",
-    "@slack/web-api": "^5.15.0",
+    "@slack/web-api": "^7.11.0",
     "aws-cdk-lib": "^2.96.2",
     "aws-sdk": "^2.1062.0",
     "aws-serverless-express": "^3.4.0",
