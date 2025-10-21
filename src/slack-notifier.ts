@@ -47,7 +47,7 @@ export class SlackNotifier extends Construct {
     }
 
     const notifier = new aws_lambda_nodejs.NodejsFunction(this, 'SlackNotifierFunction', {
-      runtime: Runtime.NODEJS_18_X,
+      runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
       entry: path.join(__dirname, 'lambdas', 'notifier', 'index.js'),

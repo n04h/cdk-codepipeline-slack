@@ -1,4 +1,4 @@
-import { MessageAttachment } from '@slack/web-api';
+import { MessageAttachment } from './slack-types';
 
 export interface Message {
   ts?: string;
