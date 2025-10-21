@@ -25,16 +25,15 @@
   "dependencies": {
     "@slack/interactive-messages": "^1.7.1",
     "@slack/web-api": "^7.11.0",
-    "aws-cdk-lib": "^2.96.2",
+    "aws-cdk-lib": "^2.220.0",
     "aws-sdk": "^2.1062.0",
     "aws-serverless-express": "^3.4.0",
-    "constructs": "^10.2.70",
+    "constructs": "^10.4.2",
     "esbuild": "^0.19.4",
     "express": "^4.17.1",
     "get-env-or-die": "^1.0.11"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^2.68.0",
     "@types/aws-serverless-express": "^3.3.5",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.5",
