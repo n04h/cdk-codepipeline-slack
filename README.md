@@ -7,5 +7,15 @@ Derivative of [@cloudcomponents/cdk-codepipeline-slack](https://github.com/cloud
 ## How to Publish
 
 ```console
+# 任意のバージョン指定
+npm version 1.0.0
+
+# alphaバージョンの発行
+npm version premajor --preid alpha
+
+# tagをpush
+git push origin v1.0.0-alpha.0
+
+# npmレジストリに公開
 npm publish --access public
 ```
