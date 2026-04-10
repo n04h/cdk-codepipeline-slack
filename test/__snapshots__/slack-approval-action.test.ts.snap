@@ -52,19 +52,9 @@ exports[`default setup 1`] = `
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "PipelineRoleD68726F7",
+                    "Arn",
                   ],
                 },
               },
@@ -178,6 +168,9 @@ exports[`default setup 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
         "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757",
       ],
+      "Metadata": {
+        "aws:cdk:do-not-refactor": true,
+      },
       "Properties": {
         "Description": "Automatically created by the RestApi construct",
         "RestApiId": {
@@ -347,11 +340,10 @@ exports[`default setup 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
+          "S3Key": "db6452316859b26cfb71327bd2be0ee74fda115ab6d246fd9d16e6e4f186c840.zip",
         },
         "Environment": {
           "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -366,7 +358,7 @@ exports[`default setup 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs22.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -473,11 +465,10 @@ exports[`default setup 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
+          "S3Key": "f88dff2010e0a20853c611e7efd244a132c2e8724c1870007b66725043c89d45.zip",
         },
         "Environment": {
           "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -492,7 +483,7 @@ exports[`default setup 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs22.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -726,19 +717,9 @@ exports[`default setup 1`] = `
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "PipelineRoleD68726F7",
+                    "Arn",
                   ],
                 },
               },
@@ -912,19 +893,9 @@ exports[`private & public channel 1`] = `
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "PipelineRoleD68726F7",
+                    "Arn",
                   ],
                 },
               },
@@ -1038,6 +1009,9 @@ exports[`private & public channel 1`] = `
         "PipelineApproveSlackApprovalSlackApprovalApiproxyD7A51F70",
         "PipelineApproveSlackApprovalSlackApprovalApiANY6EE37757",
       ],
+      "Metadata": {
+        "aws:cdk:do-not-refactor": true,
+      },
       "Properties": {
         "Description": "Automatically created by the RestApi construct",
         "RestApiId": {
@@ -1207,11 +1181,10 @@ exports[`private & public channel 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b95ee96fe0835a709259b1c46713c67c59db775cfd17c36291b3bb0fa11fa629.zip",
+          "S3Key": "db6452316859b26cfb71327bd2be0ee74fda115ab6d246fd9d16e6e4f186c840.zip",
         },
         "Environment": {
           "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -1226,7 +1199,7 @@ exports[`private & public channel 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs22.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -1333,11 +1306,10 @@ exports[`private & public channel 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "aaa57efa1424eb45158d46e20ed5b8942bfe0e3bc595c334e97c315999b35a9a.zip",
+          "S3Key": "f88dff2010e0a20853c611e7efd244a132c2e8724c1870007b66725043c89d45.zip",
         },
         "Environment": {
           "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_BOT_NAME": "botName",
             "SLACK_BOT_TOKEN": "botToken",
             "SLACK_CHANNEL": "channel",
@@ -1352,7 +1324,7 @@ exports[`private & public channel 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs22.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -1586,19 +1558,9 @@ exports[`private & public channel 1`] = `
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "PipelineRoleD68726F7",
+                    "Arn",
                   ],
                 },
               },
