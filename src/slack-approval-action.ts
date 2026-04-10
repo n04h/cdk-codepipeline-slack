@@ -40,6 +40,10 @@ export class SlackApprovalAction extends Action {
     this.props = props;
   }
 
+  private get entryExtension(): string {
+    return __filename.endsWith('.ts') ? '.ts' : '.js';
+  }
+
   protected bound(scope: Construct, stage: IStage, options: ActionBindOptions): ActionConfig {
     const environment: Record<string, string> = {
       SLACK_BOT_TOKEN: this.props.slackBotToken,
@@ -67,7 +71,7 @@ export class SlackApprovalAction extends Action {
       runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      entry: path.join(__dirname, 'lambdas', 'approval-requester', 'index.js'),
+      entry: path.join(__dirname, 'lambdas', 'approval-requester', `index${this.entryExtension}`),
       environment,
     });
 
@@ -79,7 +83,7 @@ export class SlackApprovalAction extends Action {
       runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
       handler: 'index.handler',
-      entry: path.join(__dirname, 'lambdas', 'approval-handler', 'index.js'),
+      entry: path.join(__dirname, 'lambdas', 'approval-handler', `index${this.entryExtension}`),
       environment,
     });
 
